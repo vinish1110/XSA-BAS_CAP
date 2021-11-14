@@ -1,0 +1,86 @@
+{
+  "definitions": {
+    "Users": {
+      "kind": "entity",
+      "elements": {
+        "ID": {
+          "@Core.Computed": true,
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "FIRSTNAME": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "LASTNAME": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "GENDER": {
+          "type": "cds.String",
+          "length": 6
+        },
+        "EMAIL": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "PHONE": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "PASSWORD": {
+          "type": "cds.String",
+          "length": 16
+        }
+      }
+    },
+    "my.bookshop.Books": {
+      "kind": "entity",
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "title": {
+          "type": "cds.String"
+        },
+        "stock": {
+          "type": "cds.Integer"
+        }
+      }
+    },
+    "CatalogService": {
+      "@source": "cat-service.cds",
+      "kind": "service"
+    },
+    "CatalogService.Books": {
+      "kind": "entity",
+      "@readonly": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "my.bookshop.Books"
+          ]
+        }
+      },
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "title": {
+          "type": "cds.String"
+        },
+        "stock": {
+          "type": "cds.Integer"
+        }
+      }
+    }
+  },
+  "meta": {
+    "creator": "CDS Compiler v2.10.4",
+    "flavor": "inferred"
+  },
+  "$version": "2.0"
+}
